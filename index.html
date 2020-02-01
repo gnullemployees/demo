@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <script src="https://kit.fontawesome.com/0bbf47f20a.js" crossorigin="anonymous"></script>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+      <title>Gary Null's | Product Search</title>
+      <style>
+          @import url('https://fonts.googleapis.com/css?family=Viga&display=swap');
+          @import url('https://fonts.googleapis.com/css?family=Alata&display=swap');
+
+          @import url('https://fonts.googleapis.com/css?family=Ropa+Sans&display=swap');
+
+          @import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+          input{
+              width: 100%;
+              padding: 10px;
+              font-size: 1.3em;
+              outline: none;
+              border-radius: 5px;
+              border: 2px solid RGBA(64, 78, 95, .3);
+              transition: .3s;
+              margin-bottom: 30px;
+          }
+          input:focus{
+              border: 2px solid #5cd1dd;
+              transition: .3s;
+          }
+          
+          .max-width{
+              max-width: 1200px;
+              margin: auto;
+              padding: 50px;
+          }
+          .logo{
+              height: 100px;
+              line-height: 100px;
+              text-align: center;
+          }
+          .logo img{
+              width: 120px;
+          }
+          .notification{
+              background-color: #404E5F;
+              height: 50px;
+              line-height: 50px;
+              text-align: center;
+              color: #F2F2F2;
+              font-size: 1.5em;
+              display: none;''
+          }
+          .notification i{
+              font-size: 1.4em;
+              position: absolute;
+              top: 10px;
+              right: 30px;
+              cursor: pointer;
+          }
+          .img{
+/*              background-color: salmon;*/
+              width: 80px;
+              height: 80px;
+              line-height: 80px;
+              overflow: hidden;
+              text-align: center;
+              border-radius: 50%;
+              position: relative;
+              left: 50%;
+              transform: translateX(-50%);
+          }
+          .img img{
+              position: relative;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 80px;
+/*              opacity: 0;*/
+/*              visibility: hidden;*/
+          }
+          .heading{
+              width: 100%;
+              margin: auto;
+              height: 40px;
+              border-radius: 5px;
+              margin-bottom: 20px;
+          }
+          h1{
+              line-height: 40px;
+              font-size: 3em;
+              color: RGBA(247, 205, 66, 1.00);
+/*              font-style: italic;*/
+/*              text-shadow: 2px 2px 0 rgba(0,0,0,.12), 2px -2px 0 rgba(0,0,0,.12), -2px 2px 0 rgba(0,0,0,.12), -2px -2px 0 rgba(0,0,0,.12), 2px 0px 0 rgba(0,0,0,.12), 0px 2px 0 rgba(0,0,0,.12), -2px 0px 0 rgba(0,0,0,.12), 0px -2px 0 rgba(0,0,0,.12), 2px 2px 2px rgba(0,0,0,.12);*/
+              text-transform: none;
+/*              letter-spacing: .08em;*/
+/*              font-family: 'Bebas Neue', cursive;*/
+/*              font-family: 'Viga', sans-serif;*/
+              font-family: 'Lobster', cursive;
+              text-align: center;
+          }
+          h4,h5,p{
+              margin: 0;
+          }
+          h4{
+              font-family: 'Alata', sans-serif;
+              margin-bottom: 5px;
+              text-transform: uppercase;
+          }
+          h5{
+              font-size: 1em;
+              font-weight: bold;
+              z-index: 999;
+          }
+          p.isorganic{
+              position: relative;
+/*
+              top: 7px;
+              right: 30px;
+*/
+              filter: saturate(0);
+          }
+          .table{
+              text-align: center;
+              background-color: #fff;
+              padding: 15px;
+              border: 1px solid gainsboro;
+              border-radius: 10px;
+/*
+              margin-top: 4px;
+              margin-bottom: 4px;
+*/
+          }
+          .table h5{
+              font-family: 'Ropa Sans', sans-serif;
+              font-size: 1.4em;
+          }
+          .table p{
+              font-family: 'Ropa Sans', sans-serif;
+              font-size: 1.4em;
+              letter-spacing: .1em;
+              color: rgba(0,0,0,.8);
+          }
+
+          ul{
+              padding: 0;
+              width: 100%;
+              text-align: center;
+          }
+          ul li{
+              list-style: none;
+              display: inline-block;
+              border: 5px solid #fff;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="notification">
+          <p>Sale day today! Everybody gets a 20% off.<i class="far fa-times-circle"></i></p>
+      </div>
+      <div class="logo">
+          <img src="images/logo.jpg">
+      </div>
+      <div class="max-width">
+          
+          <div class="container-fluid">
+              <div class="row">
+                  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Enter the product name or code" title="">
+              </div>
+              <div class="heading">
+                  <div class="container-fluid">
+                      <div class="row">
+                          <div class="col-12 px-0"><h1>Dried Fruits</h1></div>
+                      </div>
+                  </div>
+              </div>
+                  <ul id="myUL">
+                      <li>
+                          <a>
+                              <div class="table">
+                                  <h4>b1</h4>
+                                  <div class="img img-1"><img src = "images/wasabi.png"></div>
+                                  <h5>Wasabi Green Peas</h5>
+                                  <p>$5.29/lb</p>
+                              </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                                  <h4>b4</h4>
+                                  <div class="img"><img src = "images/chamomile.jpg" width="100%"></div>
+                                  <h5>Chamomile Flares</h5>
+                                  <p>$14.99/lb</p>
+                              </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                                  <h4>b201</h4>
+                                  <div class="img"><img src = "images/dried-cranberries.jpeg" width="100%"></div>
+                                  <h5>Dried Cranberries</h5>
+                                  <p>$9.69/lb</p>
+                              </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                                  <h4>b202</h4>
+                                  <div class="img"><img src = "images/dried%20banana.jpg" width="100%"></div>
+                                  <h5>Dried Whole Banana</h5>
+                                  <p>$7.99/lb</p>
+                              </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b205</h4>
+                          <div class="img"><img src = "images/papaya.jpg" width="100%"></div>
+                          <h5>Papaya Sweet</h5>
+                          <p>$6.99/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b206</h4>
+                          <div class="img"><img src = "images/dried-papaya.jpeg" width="100%"></div>
+                          <h5>Dried Papaya</h5>
+                          <p>$10.89/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b207</h4>
+                          <div class="img"><img src = "images/organic-dried-black-currants_3.jpg" width="100%"></div>
+                          <h5>Dried Black Currants</h5>
+                          <p>$3.48/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b208</h4>
+                          <div class="img"><img src = "images/BananaChips.jpg" width="100%"></div>
+                          <h5>Banana Chips</h5>
+                          <p>$3.99/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b209</h4>
+                          <div class="img"><img src = "images/flameraisins.jpg" width="100%"></div>
+                          <h5>Jumbo Flame Raisins</h5>
+                          <p>$4.19/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b211</h4>
+                          <div class="img"><img src = "images/dates.jpg" width="100%"></div>
+                          <h5>Medjool Dates</h5>
+                          <p>$8.99/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b212</h4>
+                          <div class="img"><img src = "images/apple%20rings.png"xs width="100%"></div>
+                          <h5>Dried Apple Rings</h5>
+                          <p>$9.99/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b213</h4>
+                          <div class="img"><img src = "images/organic-apricots.jpg" width="100%"></div>
+                          <h5>Turkish Apricots</h5>
+                          <p>$6.99/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b214</h4>
+                          <div class="img"><img src = "images/raisins-gold.jpg" width="100%"></div>
+                          <h5>Golden Raisins</h5>
+                          <p>$4.19/lbs</p>
+                          <p class="isorganic"><img src="non-organic.gif" width="35px"></p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b215</h4>
+                          <div class="img"><img src = "images/dried%20cherries.png" width="100%"></div>
+                          <h5>Dried Cherries</h5>
+                          <p>$19.99/lb</p>
+                          <p class="isorganic"><img src="non-organic.gif" width="35px"></p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b217</h4>
+                          <div class="img"><img src = "images/Mission-Figs.jpg" width="100%"></div>
+                          <h5>Black Mission Figs</h5>
+                          <p>$6.99/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b218</h4>
+                          <div class="img"><img src = "images/turkish.jpg" width="100%"></div>
+                          <h5>Turkish Figs</h5>
+                          <p>$6.99/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b219</h4>
+                          <div class="img"><img src = "images/mango.jpeg" width="100%"></div>
+                          <h5>Dried Mango</h5>
+                          <p>$16.99/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b221</h4>
+                          <div class="img"><img src = "images/Natural%20Dried%20Pineapple%20Rings.jpeg" width="100%"></div>
+                          <h5>Dried Pineapple</h5>
+                          <p>$12.39/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b222</h4>
+                          <div class="img"><img src = "images/sweet-pineapple.jpg"></div>
+                          <h5>Pineapple Sweet</h5>
+                          <p>$5.99/lb</p>
+                          <p class="isorganic"><img src="non-organic.gif" width="35px"></p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b224</h4>
+                          <div class="img"><img src = "images/prune-whole.jpg" width="100%"></div>
+                          <h5>Pitted Prunes</h5>
+                          <p>$6.59/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b230</h4>
+                          <div class="img"><img src = "images/thompraisins.jpg" width="100%"></div>
+                          <h5>Thompson Raisins</h5>
+                          <p>$4.19/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b909</h4>
+                          <div class="img"><img src = "images/crystal%20ginger.jpg" width="100%"></div>
+                          <h5>Crystallized Ginger</h5>
+                          <p>$7.19/lb</p>
+                          <p class="isorganic"><img src="non-organic.gif" width="35px"></p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b3010</h4>
+                          <div class="img"><img src = "images/dry%20gooseberries.jpg" width="100%"></div>
+                          <h5>Dried Gooseberries</h5>
+                          <p>$19.99/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                                  <h4>b3011</h4>
+                                  <div class="img"><img src = "images/dried%20strawberry.jpg" width="100%" style="filter: saturate(150%) brightness(105%);"></div>
+                                  <h5>Dried Strawberries</h5>
+                                  <p>$16.99/lb</p>
+                                  <p class="isorganic"><img src="non-organic.gif" width="35px"></p>
+                              </div>
+                          </a>
+                      </li>
+                  </ul>
+              
+                  <script>
+                      function myFunction() {
+                          var input, filter, ul, li, a, i, txtValue;
+                          input = document.getElementById("myInput");
+                          filter = input.value.toUpperCase();
+                          ul = document.getElementById("myUL");
+                          li = ul.getElementsByTagName("li");
+                          for (i = 0; i < li.length; i++) {
+                              a = li[i].getElementsByTagName("a")[0];
+                              txtValue = a.textContent || a.innerText;
+                              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                  li[i].style.display = "";
+                              } else {
+                                  li[i].style.display = "none";
+                              }
+                          }
+                      }
+                  </script>
+              </div>
+          </div>
+<!--          <h1 class="message">Search result will appear here</h1>-->
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>     
+      <script>
+          $('.fa-times-circle').click(function(){
+              $('.notification').css("display","none")
+          })
+      </script>
+      
+  </body>
+</html>
