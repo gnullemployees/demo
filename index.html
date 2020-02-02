@@ -16,7 +16,7 @@
           @import url('https://fonts.googleapis.com/css?family=Ropa+Sans&display=swap');
 
           @import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
-          input{
+          input#myInput{
               width: 100%;
               padding: 10px;
               font-size: 1.3em;
@@ -26,7 +26,7 @@
               transition: .3s;
               margin-bottom: 30px;
           }
-          input:focus{
+          input#myInput:focus{
               border: 2px solid #5cd1dd;
               transition: .3s;
           }
@@ -127,6 +127,7 @@
               padding: 15px;
               border: 1px solid gainsboro;
               border-radius: 10px;
+              width: 150px;
 /*
               margin-top: 4px;
               margin-bottom: 4px;
@@ -153,29 +154,101 @@
               display: inline-block;
               border: 5px solid #fff;
           }
+          nav{
+              width: 100%;
+              padding: 10px;
+              margin-bottom: 30px;
+              text-align: center;
+              display: none;
+          }
+          nav a{
+              padding: 10px;
+              background-color: RGBA(31, 40, 50, 1.00);
+              border-radius: 10px;
+              color: #5cd1dd;
+              transition: .3s;
+          }
+          nav a:hover{
+              transition: .3s;
+              text-decoration: none;
+              color: #fff;
+          }
+          nav a:not(:first-child){
+              margin-left: 10px;
+          }
+          .privacy-overlay{
+              height: 100vh;
+              width: 100%;
+              background-color: rgba(255,255,255,.8);
+              position: fixed;
+              z-index: 2000;
+/*              display: none;*/
+          }
+          .privacy-overlay input{
+              width: 50%;
+              padding: 10px;
+              font-size: 1.3em;
+              outline: none;
+              border-radius: 5px;
+              border: 2px solid RGBA(64, 78, 95, .3);
+              transition: .3s;
+              
+              position: relative;
+              top: 50%;
+              transform: translateY(-50%);
+              text-align: center;
+          }
+          .privacy-overlay input:focus{
+              border: 2px solid #5cd1dd;
+              transition: .3s;
+          }
+          .center-input{
+              text-align: center;
+              height: 100%;
+          }
+           @supports ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
+              .privacy-overlay{
+                  -webkit-backdrop-filter: blur(6px);
+                  backdrop-filter: blur(6px);
+              }
+          }
+          .show-hide{
+              display: none;
+          }
       </style>
   </head>
   <body>
+      <div class="privacy-overlay" id="privacy-overlay">
+          <div class="center-input">
+              <input type="password" id="password-input" placeholder="Enter the passcode" onkeyup="passwordCheck();" autofocus>
+          </div>
+      </div>
       <div class="notification">
           <p>Sale day today! Everybody gets a 20% off.<i class="far fa-times-circle"></i></p>
       </div>
       <div class="logo">
-          <img src="images/logo.jpg">
+          <a href="searchProducts.html"><img src="images/logo.jpg"></a>
       </div>
       <div class="max-width">
           
           <div class="container-fluid">
               <div class="row">
-                  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Enter the product name or code" title="">
+                  <input type="text" id="myInput" onkeyup="ul1Function();ul2Function();" placeholder="Enter the product name or code" title="" autofocus>
+                  <nav>
+                      <a href="#">Dried Fruits</a>
+                      <a href="#">Seeds &amp; Beans</a>
+                      <a href="#">Rice &amp; Snacks</a>
+                      
+                  </nav>
               </div>
               <div class="heading">
                   <div class="container-fluid">
                       <div class="row">
-                          <div class="col-12 px-0"><h1>Dried Fruits</h1></div>
+                          <div class="col-12 px-0"><h1 id="heading1">Dried Fruits</h1></div>
                       </div>
                   </div>
               </div>
-                  <ul id="myUL">
+              <ul id="myUL">
                       <li>
                           <a>
                               <div class="table">
@@ -423,24 +496,321 @@
                       </li>
                   </ul>
               
-                  <script>
-                      function myFunction() {
-                          var input, filter, ul, li, a, i, txtValue;
-                          input = document.getElementById("myInput");
-                          filter = input.value.toUpperCase();
-                          ul = document.getElementById("myUL");
-                          li = ul.getElementsByTagName("li");
-                          for (i = 0; i < li.length; i++) {
-                              a = li[i].getElementsByTagName("a")[0];
-                              txtValue = a.textContent || a.innerText;
-                              if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                                  li[i].style.display = "";
-                              } else {
-                                  li[i].style.display = "none";
-                              }
+              <div class="heading">
+                  <div class="container-fluid">
+                      <div class="row">
+                          <div class="col-12 px-0"><h1 id="heading2">Seeds &amp; Beans</h1></div>
+                      </div>
+                  </div>
+              </div>
+              <ul id="ul2">
+                      <li>
+                          <a>
+                              <div class="table">
+                                  <h4>b258</h4>
+                                  <div class="img img-1"><img src = "images/salted-sunflower.jpg"></div>
+                                  <h5>Roasted Salted Sunflower Seeds</h5>
+                                  <p>$3.69/lb</p>
+                                  <p class="isorganic"><img src="non-organic.gif" width="35px"></p>
+                              </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b259</h4>
+                          <div class="img"><img src = "images/sesame-seed.jpg" width="100%"></div>
+                          <h5>Raw Hulled Sesame Seeds</h5>
+                          <p>$3.69/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b270</h4>
+                          <div class="img"><img src = "images/tamari.jpg" width="100%"></div>
+                          <h5>Tamari Pumpkin Seeds</h5>
+                          <p>$11.99/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                             <div class="table">
+                          <h4>b271</h4>
+                          <div class="img"><img src = "images/roasted-sunflower-seeds.jpg" width="100%"></div>
+                          <h5>Roasted Unsalted Sunflower Seeds</h5>
+                          <p>$2.79/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b279</h4>
+                          <div class="img"><img src = "images/raw-sunflower.jpg" width="100%"></div>
+                          <h5>Raw Hulled Sunflower Seeds</h5>
+                          <p>$4.39/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b284</h4>
+                          <div class="img"><img src = "images/raw-pumpkin.jpg" width="100%"></div>
+                          <h5>Raw Pumpkin Seeds</h5>
+                          <p>$7.69/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                             <div class="table">
+                          <h4>b361</h4>
+                          <div class="img"><img src = "images/gold-flax.jpg" width="100%"></div>
+                          <h5>Golden Flax Seeds</h5>
+                          <p>$2.59/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b362</h4>
+                          <div class="img"><img src = "images/raw-flaxseed.jpg" width="100%"></div>
+                          <h5>Flax Seeds</h5>
+                          <p>$2.59/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b929</h4>
+                          <div class="img"><img src = "images/chia-seeds.jpg" style="filter: brightness(120%);" width="100%"></div>
+                          <h5>Black Chia Seeds</h5>
+                          <p>$13.79/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b341</h4>
+                          <div class="img"><img src = "images/pintos.png" width="100%"></div>
+                          <h5>Pinto Beans</h5>
+                          <p>$2.19/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b342</h4>
+                          <div class="img"><img src = "images/lima-beans.jpg" width="100%"></div>
+                          <h5>Baby Lima Beans</h5>
+                          <p>$2.49/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                             <div class="table">
+                          <h4>b343</h4>
+                          <div class="img"><img src = "images/red-kidney.png" width="100%"></div>
+                          <h5>Red Kidney Beans</h5>
+                          <p>$3.59/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b344</h4>
+                          <div class="img"><img src = "images/mung-beans.jpg" width="100%"></div>
+                          <h5>Mung Beans</h5>
+                          <p>$2.89/lbs</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b345</h4>
+                          <div class="img"><img src = "images/navy-beans.jpg" width="100%"></div>
+                          <h5>Navy Beans</h5>
+                          <p>$2.29/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b346</h4>
+                          <div class="img"><img src = "images/turtle%20beans.jpg" width="100%"></div>
+                          <h5>Black / Turtle Beans</h5>
+                          <p>$2.19/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b348</h4>
+                          <div class="img"><img src = "images/adzuki.jpg" width="100%"></div>
+                          <h5>Adzuki Beans</h5>
+                          <p>$3.79/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b370</h4>
+                          <div class="img"><img src = "images/french.jpg" width="100%"></div>
+                          <h5>French Indigo Lentils</h5>
+                          <p>$2.89/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b371</h4>
+                          <div class="img"><img src = "images/green-split-peas.jpg" width="100%"></div>
+                          <h5>Green Split Peas</h5>
+                          <p>$2.09/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b372</h4>
+                          <div class="img"><img src = "images/red-lentils.jpg"></div>
+                          <h5>Red Lentils</h5>
+                          <p>$2.89/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b373</h4>
+                          <div class="img"><img src = "images/black-eyed-peas.jpg" width="100%"></div>
+                          <h5>Black Eyed Peas</h5>
+                          <p>$2.09/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b374</h4>
+                          <div class="img"><img src = "images/green-lentils.jpeg" width="100%"></div>
+                          <h5>Green Lentils</h5>
+                          <p>$2.89/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b375</h4>
+                          <div class="img"><img src = "images/yellow-split-peas.jpg" width="100%"></div>
+                          <h5>Yellow Split Peas</h5>
+                          <p>$2.09/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b376</h4>
+                          <div class="img"><img src = "images/chickpeas.jpg" width="100%"></div>
+                          <h5>Chick Peas</h5>
+                          <p>$2.89/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b377</h4>
+                          <div class="img"><img src = "images/brown-lentils.jpg" width="100%"></div>
+                          <h5>Brown Lentils</h5>
+                          <p>$2.89/lb</p>
+                      </div>
+                          </a>
+                      </li>
+                  </ul>
+              
+              <script>
+                  function ul1Function() {
+                      let isMatch = false 
+                      var input, filter, ul, li, a, i, txtValue, heading1, heading2;
+                      input = document.getElementById("myInput");
+                      filter = input.value.toUpperCase();
+                      ul = document.getElementById("myUL");
+                      li = ul.getElementsByTagName("li");
+                      heading1 = document.getElementById("heading1");
+                      heading2 = document.getElementById("heading2");
+                      for (i = 0; i < li.length; i++) {
+                          a = li[i].getElementsByTagName("a")[0];
+                          txtValue = a.textContent || a.innerText;
+                          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                              li[i].style.display = "";
+                              isMatch = true;
+                          } else {
+                              li[i].style.display = "none";
                           }
                       }
-                  </script>
+                      if(isMatch){
+                          $('#heading1').css("display","block")
+                      }else if(!isMatch){
+                          $('#heading1').css("display","none")
+                      }
+                  }
+                  
+                  function ul2Function() {
+                      let isMatch = false 
+                      var input, filter, ul, li, a, i, txtValue,heading1, heading2;
+                      input = document.getElementById("myInput");
+                      filter = input.value.toUpperCase();
+                      ul = document.getElementById("ul2");
+                      li = ul.getElementsByTagName("li");
+                      heading1 = document.getElementById("heading1");
+                      heading2 = document.getElementById("heading2");
+                      for (i = 0; i < li.length; i++) {
+                          a = li[i].getElementsByTagName("a")[0];
+                          txtValue = a.textContent || a.innerText;
+                          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                              li[i].style.display = "";
+                              isMatch = true;
+                          } else {
+                              li[i].style.display = "none";
+                          }
+                      }
+                      if(isMatch){
+                          $('#heading2').css("display","block")
+                      }else if(!isMatch){
+                          $('#heading2').css("display","none")
+                      }
+                  }
+              </script>
+              <script>
+                  function passwordCheck(){
+                      var input = document.getElementById("password-input").value
+                      var overlay = document.getElementById("privacy-overlay")
+                      if(input === "1234"){
+                          overlay.style.display = 'none'
+                      }else{
+                          overlay.style.display = ''
+                      }
+                  }
+              </script>
               </div>
           </div>
 <!--          <h1 class="message">Search result will appear here</h1>-->
