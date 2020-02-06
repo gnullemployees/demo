@@ -128,6 +128,9 @@
               border: 1px solid gainsboro;
               border-radius: 10px;
               width: 150px;
+              -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.05);
+              -moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.05);
+              box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.05);
 /*
               margin-top: 4px;
               margin-bottom: 4px;
@@ -152,7 +155,7 @@
           ul li{
               list-style: none;
               display: inline-block;
-              border: 5px solid #fff;
+              border: 8px solid #fff;
           }
           nav{
               width: 100%;
@@ -233,7 +236,7 @@
           
           <div class="container-fluid">
               <div class="row">
-                  <input type="text" id="myInput" onkeyup="ul1Function();ul2Function();" placeholder="Enter the product name or code" title="" autofocus>
+                  <input type="text" id="myInput" onkeyup="ul1Function();ul2Function();ul3Function();" placeholder="Enter the product name or code" title="" autofocus>
                   <nav>
                       <a href="#">Dried Fruits</a>
                       <a href="#">Seeds &amp; Beans</a>
@@ -747,6 +750,97 @@
                       </li>
                   </ul>
               
+              <div class="heading">
+                  <div class="container-fluid">
+                      <div class="row">
+                          <div class="col-12 px-0"><h1 id="heading3">Rice</h1></div>
+                      </div>
+                  </div>
+              </div>
+              <ul id="ul3">
+                      <li>
+                          <a>
+                              <div class="table">
+                                  <h4>b320</h4>
+                                  <div class="img img-1"><img src = "images/sweet%20brown%20rice.jpg"></div>
+                                  <h5>Organic Sweet Brown Rice</h5>
+<!--                                  <p>$3.69/lb</p>-->
+                              </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b321</h4>
+                          <div class="img"><img src = "images/jasmine-brown.jpg" width="100%"></div>
+                          <h5>Organic Brown Jasmine Rice</h5>
+<!--                          <p>$3.69/lb</p>-->
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b322</h4>
+                          <div class="img"><img src = "images/sushi-rice.jpg" width="100%"></div>
+                          <h5>Organic White Sushi Rice</h5>
+<!--                          <p>$11.99/lb</p>-->
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                             <div class="table">
+                          <h4>b323</h4>
+                          <div class="img"><img src = "images/white-jasmine-rice.jpg" width="100%"></div>
+                          <h5>Organic White Jasmine Rice</h5>
+<!--                          <p>$2.79/lb</p>-->
+                      </div>
+                          </a>
+                      </li><br>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b327</h4>
+                          <div class="img"><img src = "images/short-grain-brown.jpg" width="100%"></div>
+                          <h5>Organic Short Grain Brown Rice</h5>
+<!--                          <p>$4.39/lb</p>-->
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b328</h4>
+                          <div class="img"><img src = "images/long-grain-brown.jpg" width="100%"></div>
+                          <h5> Organic Long Grain Brown Rice</h5>
+<!--                          <p>$7.69/lb</p>-->
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                             <div class="table">
+                          <h4>b330</h4>
+                          <div class="img"><img src = "images/organic-brown-basmati-rice.jpg" width="100%"></div>
+                          <h5>Organic Basmati Brown Rice</h5>
+<!--                          <p>$2.59/lb</p>-->
+                      </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a>
+                              <div class="table">
+                          <h4>b331</h4>
+                          <div class="img"><img src = "images/basmati-white.jpg" width="100%"></div>
+                          <h5>Organic Basmati White Rice</h5>
+<!--                          <p>$2.59/lb</p>-->
+                      </div>
+                          </a>
+                      </li>
+                      
+                  </ul>
+              
               <script>
                   function ul1Function() {
                       let isMatch = false 
@@ -797,6 +891,32 @@
                           $('#heading2').css("display","block")
                       }else if(!isMatch){
                           $('#heading2').css("display","none")
+                      }
+                  }
+                  
+                  function ul3Function() {
+                      let isMatch = false 
+                      var input, filter, ul, li, a, i, txtValue,heading1, heading2;
+                      input = document.getElementById("myInput");
+                      filter = input.value.toUpperCase();
+                      ul = document.getElementById("ul3");
+                      li = ul.getElementsByTagName("li");
+                      heading1 = document.getElementById("heading1");
+                      heading2 = document.getElementById("heading2");
+                      for (i = 0; i < li.length; i++) {
+                          a = li[i].getElementsByTagName("a")[0];
+                          txtValue = a.textContent || a.innerText;
+                          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                              li[i].style.display = "";
+                              isMatch = true;
+                          } else {
+                              li[i].style.display = "none";
+                          }
+                      }
+                      if(isMatch){
+                          $('#heading3').css("display","block")
+                      }else if(!isMatch){
+                          $('#heading3').css("display","none")
                       }
                   }
               </script>
