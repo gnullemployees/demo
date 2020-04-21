@@ -1,6 +1,4 @@
-$('.fa-times-circle').click(function(){
-              $('.notification').css("display","none")
-          })
+
           $(document).scroll(function () {
               //stick nav to top of page
               var y = $(this).scrollTop();
